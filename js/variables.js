@@ -1,5 +1,5 @@
 //  переменные, объявление и инициализация
-
+console.log('variables');
 
 console.log(student); // undefined
 
