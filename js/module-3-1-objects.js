@@ -1,5 +1,5 @@
 // console.log(typeof {}, {})
-console.log({});
+// console.log({});
 
 const obj = {
   // props (key: value,)
@@ -21,14 +21,14 @@ const obj = {
   // methods
   // ES5
   showName1: function () {
-    console.log("Hello");
+    // console.log("Hello");
   },
   // ES6
   showName2() {
-    console.log("World");
+    // console.log("World");
   },
 };
-console.log(obj);
+// console.log(obj);
 
 // Получить значения свойства в объекте GET READ
 // console.log('name:', obj.name)
@@ -100,7 +100,7 @@ for (let prop in nextUser) {
 }
 const object = {};
 for (let key in object) {
-  console.log("key", key);
+//   console.log("key", key);
 }
 
 // console.dir(Object)
@@ -130,32 +130,32 @@ for (let key in newNewProd) {
 // console.log(newProduct.hasOwnProperty('price')) // true
 
 // Object.keys(obj) - массив ключей
-const myKeys = Object.keys(obj);
-console.log(myKeys);
-console.log(myKeys[0]); // key at index 0
+// const myKeys = Object.keys(obj);
+// console.log(myKeys);
+// console.log(myKeys[0]); // key at index 0
 
-console.log(obj[myKeys[0]]); // A string
+// console.log(obj[myKeys[0]]); // A string
 //          obj['prop_a']
 
 // Object.values(obj) - массив значений
 const myValues = Object.values(obj);
-console.log(myValues);
+// console.log(myValues);
 
 const prod = {
   count: 2,
   price: 10,
 };
 
-const vals = Object.values(prod);
-console.log(vals);
-const totalPrice = vals[0] * vals[1];
-console.log(totalPrice);
+// const vals = Object.values(prod);
+// console.log(vals);
+// const totalPrice = vals[0] * vals[1];
+// console.log(totalPrice);
 
 // Object.entries(obj) - многомерный массив в виде
 // [[key1, value1], [key2, value2], [key3, value3]]
 
 const myEntries = Object.entries(obj);
-console.log(myEntries);
+// console.log(myEntries);
 
 // & methods
 // this
@@ -167,4 +167,6 @@ const user = {
   },
 };
 
-console.log(user.showUserName());
+// console.log(user.showUserName());
+
+
