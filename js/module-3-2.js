@@ -113,7 +113,7 @@ console.log(Math.min(...numbers));
 function getResult(a, b) {
   let total = 0;
   console.log(arguments); //pseudoarray
-  // создание нового массива через паспыление исходного
+  // создание нового массива через распыление исходного
   const nums = [...arguments]; // normal array
 
   for (let num of nums) {
