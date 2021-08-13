@@ -966,8 +966,8 @@ pizzaPalace.order("Венская", makePizza, onOrderError);
 
 //----------------------------------------------------------------------
 //4-5
-// Выполни рефакторинг методов объекта pizzaPalace, расставив 
-// отсутствующие this в местах обращения к свойствам и 
+// Выполни рефакторинг методов объекта pizzaPalace, расставив
+// отсутствующие this в местах обращения к свойствам и
 // методам объекта.
 
 const pizzaPalace4 = {
@@ -993,24 +993,23 @@ const pizzaPalace4 = {
 // console.log(pizzaPalace4.order("Биг майк"));
 // console.log(pizzaPalace4.order("Венская"));
 
-
 //----------------------------------------------------------------------
 //4-6
-// Перед увольнением разработчик сломал исходный код 
-// управления аккаунтами пользователей нашего сервиса 
-// доставки еды.Выполни рефакторинг методов объекта 
-// customer, расставив отсутствующие this при обращении к 
+// Перед увольнением разработчик сломал исходный код
+// управления аккаунтами пользователей нашего сервиса
+// доставки еды.Выполни рефакторинг методов объекта
+// customer, расставив отсутствующие this при обращении к
 // свойствам объекта.
 
-// После объявления объекта мы добавили вызовы методов в 
-// той последовательности, в которой твой код будут 
+// После объявления объекта мы добавили вызовы методов в
+// той последовательности, в которой твой код будут
 // проверять тесты.Пожалуйста ничего там не меняй.
 
 const customer = {
-  username: 'Mango',
+  username: "Mango",
   balance: 24000,
   discount: 0.1,
-  orders: ['Burger', 'Pizza', 'Salad'],
+  orders: ["Burger", "Pizza", "Salad"],
   // Пиши код ниже этой строки
   getBalance() {
     return this.balance;
@@ -1037,26 +1036,25 @@ const customer = {
 // console.log(customer.getBalance()); // 19750
 // console.log(customer.getOrders()); // ['Burger', 'Pizza', 'Salad', 'Steak']
 
-
 //----------------------------------------------------------------------
 //4-7
-// Сервису приготовления и доставки еды требуется функция 
+// Сервису приготовления и доставки еды требуется функция
 // генерации сообщений о статусе заказа.
 
-// Дополни функцию composeMessage(position) так, чтобы она 
+// Дополни функцию composeMessage(position) так, чтобы она
 // возвращала строку в формате 'Готовим <блюдо> для <почта>.
 // Ваш заказ < позиция > -й в очереди.' Позиция это значение
-// параметра position - позиция элемента в массиве(на 
+// параметра position - позиция элемента в массиве(на
 // единицу больше чем индекс).
 
-// Не объявляй дополнительные параметры функции 
+// Не объявляй дополнительные параметры функции
 // composeMessage(position).
-// Используй call для вызова функции в контексте одного 
+// Используй call для вызова функции в контексте одного
 // объекта - заказа.
 // Используй this в теле функции для доступа к свойствам
 // объекта - заказа в контексте которого она была вызывана.
-// Дополни код так, чтобы в переменной messages получился 
-// массив сообщений о статусе заказов из массива orders с 
+// Дополни код так, чтобы в переменной messages получился
+// массив сообщений о статусе заказов из массива orders с
 // помощью цикла for.
 
 const orders = [
@@ -1067,18 +1065,18 @@ const orders = [
 
 // Пиши код ниже этой строки
 function composeMessage(position) {
-    return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`;
+  return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`;
 }
 
 const messages = [];
-for (let i = 0; i < orders.length; i += 1){
-  messages.push(composeMessage.call(orders[i], i+1));
+for (let i = 0; i < orders.length; i += 1) {
+  messages.push(composeMessage.call(orders[i], i + 1));
 }
 // console.log(messages);
 
 //----------------------------------------------------------------------
 //4-8
-// Выполни рефакторинг кода так, чтобы функция 
+// Выполни рефакторинг кода так, чтобы функция
 // composeMessage(position) вызывалась методом apply.
 
 const orders1 = [
@@ -1094,17 +1092,16 @@ function composeMessage1(position) {
 
 const messages1 = [];
 for (let i = 0; i < orders1.length; i++) {
-  const msg = composeMessage1.apply(orders1[i], [i + 1]);;
+  const msg = composeMessage1.apply(orders1[i], [i + 1]);
   messages1.push(msg);
 }
 
-
 //----------------------------------------------------------------------
 //4-9
-// Функция composeMessage(customerName) создаёт 
+// Функция composeMessage(customerName) создаёт
 // приветственные сообщения для ресторанов.Дополни код так,
-// чтобы в переменных pizzaPalaceComposer и burgerShackComposer 
-// были её копии с привязанным контекстом к соответствующим 
+// чтобы в переменных pizzaPalaceComposer и burgerShackComposer
+// были её копии с привязанным контекстом к соответствующим
 // объектам.
 
 const pizzaPalace5 = {
@@ -1126,19 +1123,18 @@ const pizzaPalaceMessage = pizzaPalaceComposer("Манго");
 const burgerShackComposer = composeMessage5.bind(burgerShack);
 const burgerShackMessage = burgerShackComposer("Поли");
 
-
 //----------------------------------------------------------------------
 //4-10
-// Сервису рассылки электронной почты необходимо добавить 
-// логирование действий для сбора статистики.Функция 
-// logAndInvokeAction(email, action) ожидает почту и 
-// действие которое нужно выполнить - ссылку на метод 
-// объекта service.Сбор статистики симулируется 
-// логированием строки.Разберись и дополни код так, 
+// Сервису рассылки электронной почты необходимо добавить
+// логирование действий для сбора статистики.Функция
+// logAndInvokeAction(email, action) ожидает почту и
+// действие которое нужно выполнить - ссылку на метод
+// объекта service.Сбор статистики симулируется
+// логированием строки.Разберись и дополни код так,
 // чтобы он работал верно.
 
 const service = {
-  mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
+  mailingList: ["mango@mail.com", "poly@hotmail.de", "ajax@jmail.net"],
   subscribe(email) {
     this.mailingList.push(email);
     return `Почта ${email} добавлена в рассылку.`;
@@ -1174,3 +1170,678 @@ console.log(secondInvoke);
 // Почта poly@hotmail.de удалена из рассылки.
 
 console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
+//==============================================================
+//МОДУЛЬ 5
+//----------------------------------------------------------------------
+//5-1
+// Измени код так, чтобы объект parent стал прототипом для
+// объекта в переменной сhild.
+
+const parent = {
+  name: "Stacey",
+  surname: "Moore",
+  age: 54,
+  heritage: "Irish",
+};
+
+const child = Object.create(parent);
+
+child.name = "Jason";
+child.age = 27;
+
+console.log(parent.hasOwnProperty("surname"));
+console.log(parent.hasOwnProperty("heritage"));
+console.log(child.hasOwnProperty("name"));
+console.log(child.name);
+console.log(child.hasOwnProperty("age"));
+console.log(child.age);
+console.log(child.hasOwnProperty("surname"));
+console.log(child.surname);
+console.log(child.hasOwnProperty("heritage"));
+console.log(child.heritage);
+console.log(parent.isPrototypeOf(child));
+
+//----------------------------------------------------------------------
+//5-2
+// Измени код, построив цепочку прототипов так, чтобы объект
+// ancestor был прототипом для parent, а тот в свою очередь
+// был прототипом для child
+
+const ancestor = {
+  name: "Paul",
+  age: 83,
+  surname: "Dawson",
+  heritage: "Irish",
+};
+
+const parent1 = Object.create(ancestor);
+parent1.name = "Stacey";
+parent1.surname = "Moore";
+parent1.age = 54;
+
+const child1 = Object.create(parent1);
+child1.name = "Jason";
+child1.age = 27;
+
+console.log(parent1.isPrototypeOf(child1));
+console.log(parent1.surname);
+console.log(parent1.heritage);
+console.log(parent1.hasOwnProperty("surname"));
+console.log(parent1.hasOwnProperty("heritage"));
+console.log(ancestor.isPrototypeOf(parent1));
+console.log(child1.hasOwnProperty("surname"));
+console.log(child1.surname);
+console.log(child1.heritage);
+console.log(child1.hasOwnProperty("heritage"));
+console.log(ancestor.heritage);
+console.log(ancestor.hasOwnProperty("surname"));
+console.log(ancestor.hasOwnProperty("heritage"));
+console.log(ancestor.surname);
+
+//----------------------------------------------------------------------
+//5-3
+// Объяви функцию-конструктор Car которая принимает три
+// параметра:
+// brand - марка автомобиля.
+// model - модель автомобиля.
+// price - цена автомобиля.
+// Функция Car должна создавать объект с одноимёнными
+// свойствами brand, model и price, значениями которых
+// должны быть переданные аргументы во время её вызова с
+// оператором new.
+
+// function Car(brand, model, price) {
+//   this.brand = brand;
+//   this.model = model;
+//   this.price = price;
+// }
+
+// console.log(new Car("Audi", "Q3", 36000));
+// console.log(new Car("BMW", "X5", 58900));
+// console.log(new Car("Nissan", "Murano", 31700));
+
+//----------------------------------------------------------------------
+//5-4
+// Выполни рефакторинг функции-конструктора Car так, чтобы
+// она принимала один параметр - объект со свойсвами brand,
+// model и price.Деструктуризируй объект в сигнатуре(подписи)
+// функции.
+
+function Car1({ brand, model, price }) {
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+}
+
+console.log(new Car1({ brand: "Audi", model: "Q3", price: 36000 }));
+console.log(new Car1({ brand: "BMW", model: "X5", price: 58900 }));
+console.log(new Car1({ brand: "Nissan", model: "Murano", price: 31700 }));
+
+//----------------------------------------------------------------------
+//5-5
+// Добавь в свойство prototype функции-конструктора Car два метода:
+
+// getPrice() - возвращает значение свойства price из объекта который его будет
+// вызывать.
+// changePrice(newPrice) - обновляет значение свойства price у объекта который
+// его будет вызывать на newPrice.
+
+function Car2({ brand, model, price }) {
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+}
+
+Car2.prototype.getPrice = function () {
+  return this.price;
+};
+
+Car2.prototype.changePrice = function (newPrice) {
+  this.price = newPrice;
+};
+
+console.log(Car2.prototype.hasOwnProperty("getPrice"));
+console.log(Car2.prototype.getPrice);
+console.log(Car2.prototype.hasOwnProperty("changePrice"));
+console.log(new Car2({ brand: "Audi", model: "Q3", price: 36000 }));
+console.log(new Car2({ brand: "Audi", model: "Q3", price: 36000 }));
+
+//----------------------------------------------------------------------
+//5-6
+// С помощью Function Declaration напиши функцию-конструктор Storage, которая
+// будет создавать объекты для управления складом товаров.Функция ожидает только
+// один аргумент - начальный массив товаров, который записывается на создаваемый
+// объект в свойство items.
+
+// Добавь методы на прототип:
+
+// getItems() - возвращает массив текущих товаров в свойстве items объекта,
+// который вызывает этот метод.
+// addItem(newItem) - принимает новый товар newItem и добавляет его в массив
+// товаров в свойстве items объекта, который вызывает этот метод.
+// removeItem(item) - принимает товар item и удаляет его из массива товаров в
+// свойстве items объекта, который вызывает этот метод.
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той
+// последовательности, в которой твой код будут проверять тесты.Пожалуйста ничего
+// там не меняй.
+
+function Storage(items) {
+  this.items = items;
+}
+
+Storage.prototype.getItems = function () {
+  return this.items;
+};
+Storage.prototype.addItem = function (newItem) {
+  return this.items.push(newItem);
+};
+Storage.prototype.removeItem = function (item) {
+  this.items.splice(this.items.indexOf(item), 1);
+};
+// Пиши код выше этой строки
+const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+storage.addItem("Дроид");
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+storage.removeItem("Пролонгер");
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+
+//----------------------------------------------------------------------
+//5-7
+// С помощью Function Declaration напиши функцию-конструктор StringBuilder,
+// которая принимает один параметр baseValue - произвольную строку, которая
+// записывается на создаваемый объект в свойство value.
+
+// Добавь методы на прототип:
+
+// getValue() - возвращает текущее значение свойства value.
+// padEnd(str) - получает парметр str (строку) и добавляет её в конец значения
+// свойства value объекта, который вызывает этот метод.
+// padStart(str) - получает парметр str (строку) и добавляет её в начало
+// значения свойства value объекта, который вызывает этот метод.
+// padBoth(str) - получает парметр str (строку) и добавляет её в начало и в
+// конец значения свойства value объекта, который вызывает этот метод.
+
+function StringBuilder(baseValue) {
+  this.value = baseValue;
+}
+
+StringBuilder.prototype.getValue = function () {
+  return this.value;
+};
+StringBuilder.prototype.padEnd = function (str) {
+  this.value = this.value + str;
+};
+
+StringBuilder.prototype.padStart = function (str) {
+  this.value = str + this.value;
+};
+StringBuilder.prototype.padBoth = function (str) {
+  this.value = str + this.value + str;
+};
+// Пиши код выше этой строки
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // '.'
+builder.padStart("^");
+console.log(builder.getValue()); // '^.'
+builder.padEnd("^");
+console.log(builder.getValue()); // '^.^'
+builder.padBoth("=");
+console.log(builder.getValue()); // '=^.^='
+
+//----------------------------------------------------------------------
+//5-8
+// Используя ключевое слово class объяви класс Car с пустым телом.
+// class Car {}
+
+//----------------------------------------------------------------------
+//5-9
+// Выполни рефакторинг кода, заменив функцию-конструктор Car на класс
+// с методом - конструктором, принимающим объект.
+
+// До рефакторинга
+function Car({ brand, model, price }) {
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+}
+// После рефакторинга
+// class Car {
+//   constructor({ brand, model, price }) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+// }
+
+//----------------------------------------------------------------------
+//5-10
+// Добавь классу Car две метода.
+
+// getPrice() - возвращает значение свойства price из объекта который его
+// будет вызывать.
+// changePrice(newPrice) - обновляет значение свойства price у объекта
+// который его будет вызывать на newPrice.
+
+// class Car {
+//   constructor({ brand, model, price }) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+
+//   getPrice() {
+//     return this.price;
+//   }
+
+//   changePrice(newPrice) {
+//     this.price = newPrice;
+//   }
+// }
+
+//----------------------------------------------------------------------
+//5-11
+// Выполни рефакторинг класса Car так, чтобы свойство brand было
+// приватным и добавь два метода для публичного интерфейса, для
+// чтения и изменения этого свойства.
+
+// getBrand() - возвращает значение приватного свойства brand.
+// changeBrand(newBrand) - изменяет значение приватного свойства
+// brand на newBrand.
+
+// class Car {
+//   #brand;
+//   constructor({ brand, model, price }) {
+//     this.#brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+
+//   getBrand() {
+//     return this.#brand;
+//   }
+
+//   changeBrand(newBrand) {
+//     this.#brand = newBrand;
+//   }
+// }
+
+//----------------------------------------------------------------------
+//5-12
+// Выполни рефакторинг заменив функцию-конструктор Storage на класс с
+// методами.Сделай так, чтобы свойство items было приватным.
+
+// До рефакторинга
+// function Storage(items) {
+//   this.items = items;
+// }
+
+// Storage.prototype.getItems = function () {
+//   return this.items;
+// };
+
+// Storage.prototype.addItem = function (newItem) {
+//   this.items.push(newItem);
+// };
+
+// Storage.prototype.removeItem = function (item) {
+//   const itemIndex = this.items.indexOf(item);
+//   this.items.splice(itemIndex, 1);
+// };
+
+// После рефакторинга
+// class Storage {
+//   #items;
+
+//   constructor(items) {
+//     this.#items = items;
+//   }
+//   getItems() {
+//     return this.#items;
+//   }
+//   addItem(newItem) {
+//     this.#items.push(newItem);
+//   }
+//   removeItem(item) {
+//     const itemIndex = this.#items.indexOf(item);
+//     this.#items.splice(itemIndex, 1);
+//   }
+// }
+
+// const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
+// console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+// storage.addItem("Дроид");
+// console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+// storage.removeItem("Пролонгер");
+// console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+
+//----------------------------------------------------------------------
+//5-13
+// Выполни рефакторинг заменив функцию-конструктор StringBuilder на класс
+// с методами.Сделай так, чтобы свойство value было приватным.
+
+// До рефакторинга
+// function StringBuilder(baseValue) {
+//   this.value = baseValue;
+// }
+
+// StringBuilder.prototype.getValue = function () {
+//   return this.value;
+// };
+
+// StringBuilder.prototype.padEnd = function (str) {
+//   this.value += str;
+// };
+
+// StringBuilder.prototype.padStart = function (str) {
+//   this.value = str + this.value;
+// };
+
+// StringBuilder.prototype.padBoth = function (str) {
+//   this.padStart(str);
+//   this.padEnd(str);
+// };
+
+// После рефакторинга
+// class StringBuilder {
+//   #value;
+//   constructor(baseValue) {
+//     this.#value = baseValue;
+//   }
+//   getValue() {
+//     return this.#value;
+//   }
+//   padEnd(str) {
+//     this.#value += str;
+//   }
+//   padStart(str) {
+//     this.#value = str + this.#value;
+//   }
+//   padBoth(str) {
+//     this.padStart(str);
+//     this.padEnd(str);
+//   }
+// }
+
+// const builder = new StringBuilder(".");
+// // console.log(builder.getValue()); // '.'
+// builder.padStart("^");
+// // console.log(builder.getValue()); // '^.'
+// builder.padEnd("^");
+// // console.log(builder.getValue()); // '^.^'
+// builder.padBoth("=");
+// // console.log(builder.getValue()); // '=^.^='
+
+//----------------------------------------------------------------------
+//5-14
+// Выполни рефакторинг класса Car. Сделай свойства model и price приватными,
+// также как #brand.Стандартизируй публичный интерфейс класса заменив уже
+// объявленные методы на геттеры и сеттеры brand, model и price для
+// взаимодействия с приватными свойствами.
+
+// class Car {
+//   #model;
+//   #price;
+//   #brand;
+
+//   constructor({ brand, model, price }) {
+//     this.#brand = brand;
+//     this.#model = model;
+//     this.#price = price;
+//   }
+
+//   get brand() {
+//     return this.#brand;
+//   }
+
+//   set brand(newBrand) {
+//     this.#brand = newBrand;
+//   }
+
+//   get model() {
+//     return this.#model;
+//   }
+
+//   set model(newModel) {
+//     this.#model = newModel;
+//   }
+
+//   get price() {
+//     return this.#price;
+//   }
+
+//   set price(newPrice) {
+//     this.#price = newPrice;
+//   }
+// }
+
+//----------------------------------------------------------------------
+//5-15
+// Выполни рефакторинг класса Car. Добавь публичное статическое свойство
+// MAX_PRICE со значением 50000 - максимально допустимая цена автомобиля.
+
+// Добавь сеттеру price проверку передаваемого значения параметра newPrice.
+// Если оно больше чем MAX_PRICE, сеттер ничего не делает, а если меньше или
+// равно, то перезаписывает цену автомобиля.
+
+// class Car5 {
+//   // Пиши код ниже этой строки
+//   static MAX_PRICE = 50000;
+//   #price;
+
+//   constructor({ price }) {
+//     this.#price = price;
+//   }
+
+//   get price() {
+//     return this.#price;
+//   }
+// // вариант 1
+//   // set price(newPrice) {
+//   //   if (newPrice > 50000) {
+//   //     return;
+//   //   }
+//   //   this.#price = newPrice;
+//   // }
+// // вариант2
+//   set price(newPrice) {
+//     if (newPrice <= Car5.MAX_PRICE) {
+//       this.#price = newPrice;
+//     }
+//   }
+
+//   // Пиши код выше этой строки
+// }
+
+// const audi = new Car5({ price: 35000 });
+// console.log(audi.price); // 35000
+
+// audi.price = 49000;
+// console.log(audi.price); // 49000
+
+// audi.price = 51000;
+// console.log(audi.price); // 49000
+
+//----------------------------------------------------------------------
+//5-16
+// Добавь классу Car публичный статический метод checkPrice(price),
+// принимающий цену автомобиля.Метод должен сравнить значения параметра
+// price и приватного статического свойства MAX_PRICE.
+
+// Если цена автомобиля превышает максимальную, метод должен вернуть
+// строку 'Внимание! Цена превышает допустимую.'.
+// В противном случае метод должен вернуть строку 'Всё хорошо, цена в порядке.'.
+// Под объявлением класса мы добавили инициализацию экземпляра и вызовы
+// методов, чтобы показать как будет использоваться метод checkPrice(price).
+
+// class Car {
+//   static #MAX_PRICE = 50000;
+//
+//   static checkPrice(price) {
+//     if (price > Car.#MAX_PRICE) {
+//       return ("Внимание! Цена превышает допустимую.");
+//     }
+//     return ('Всё хорошо, цена в порядке.')
+//   }
+//
+//   constructor({ price }) {
+//     this.price = price;
+//   }
+// }
+
+// const audi = new Car({ price: 36000 });
+// const bmw = new Car({ price: 64000 });
+
+// console.log(Car.checkPrice(audi.price)); // Всё хорошо, цена в порядке.
+// console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую.
+
+//----------------------------------------------------------------------
+//5-17
+
+// В приложении нужен администратор с возможностью добавлять почты
+// пользователей в чёрный список.
+
+// Объяви класс Admin, который наследует от класса User.
+// Добавь классу Admin публичное статическое свойство AccessLevel
+// (уровень доступа), значение которого это объект
+// { BASIC: 'basic', SUPERUSER: 'superuser' }.
+
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// class Admin extends User {
+//   static AccessLevel = { BASIC: "basic", SUPERUSER: "superuser" };
+// }
+
+// console.log(Admin.AccessLevel.BASIC);
+// console.log(Admin.AccessLevel.SUPERUSER);
+
+//----------------------------------------------------------------------
+//5-18
+// Добавь классу Admin метод constructor, который принимает один
+// параметр - объект настроек с двумя свойствами email и accessLevel.
+// Добавь классу Admin публичное свойство accessLevel, значение
+// которого будет передаваться при вызове конструктора.
+
+// Чтобы показать как будет использоваться класс Admin, мы добавили
+// инициализацию экземпляра под объявлением класса.
+
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// class Admin extends User {
+//   accessLevel;
+//   static AccessLevel = {
+//     BASIC: "basic",
+//     SUPERUSER: "superuser",
+//   };
+
+//   constructor({ email, accessLevel }) {
+//     super(email);
+//     this.accessLevel = accessLevel;
+//   }
+// }
+
+// const mango = new Admin({
+//   email: "mango@mail.com",
+//   accessLevel: Admin.AccessLevel.SUPERUSER,
+// });
+
+// console.log(mango.email); // mango@mail.com
+// console.log(mango.accessLevel); // superuser
+
+//----------------------------------------------------------------------
+//5-19
+// Добавь классу Admin следующие свойства и методы.
+
+// Публичное свойство blacklistedEmails для хранения чёрного списка
+// почтовых адресов пользователей.Значение по умолчанию это пустой массив.
+// Публичный метод blacklist(email) для добавления почты в чёрный список.
+// Метод должен добавлять значение параметра email в массив хранящийся в
+// свойстве blacklistedEmails.
+// Публичный метод isBlacklisted(email) для проверки почты в чёрном списке.
+// Метод должен проверять наличие значения параметра email в массиве
+// хранящемся в свойстве blacklistedEmails и возвращать true или false.
+
+// После объявления класса мы добавили инициализацию экземпляра и вызовы
+// методов в той последовательности, в которой твой код будут проверять
+// тесты.Пожалуйста ничего там не меняй.
+
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+// class Admin extends User {
+//    static AccessLevel = {
+//     BASIC: "basic",
+//     SUPERUSER: "superuser",
+//   };
+
+//   accessLevel;
+//   blacklistedEmails = [];
+
+//   constructor({ email, accessLevel }) {
+//     super(email);
+//     this.accessLevel = accessLevel;
+//   }
+
+//   blacklist(email) {
+//     this.blacklistedEmails.push(email);
+//   }
+
+//   isBlacklisted(email) {
+//     if (this.blacklistedEmails.includes(email)) {
+//       return true;
+//     }
+//     return false;
+//   }
+// }
+
+// const mango = new Admin({
+//   email: "mango@mail.com",
+//   accessLevel: Admin.AccessLevel.SUPERUSER,
+// });
+
+// console.log(mango.email); // mango@mail.com
+// console.log(mango.accessLevel); // superuser
+// mango.blacklist("poly@mail.com");
+// console.log(mango.blacklistedEmails); // 'poly@mail.com'
+// console.log(mango.isBlacklisted("mango@mail.com")); //  false
+// console.log(mango.isBlacklisted("poly@mail.com")); // true
