@@ -37,7 +37,7 @@ console.log(prod.parfums.female[0].title);
 let title = prod.parfums.female[0].title;
 console.log("title:", title);
 
-// Диструкция
+// Деструкция
 //const { property1 } = obj
 const { title: productTitle, name, price } = prod.parfums.female[0];
 console.log("productTitle:", productTitle);

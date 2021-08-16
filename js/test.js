@@ -83,3 +83,34 @@
 // };
 // ----
 
+// ============================================================
+
+// Приватные свойства
+class User {
+  // Необязательное объявление публичных свойств
+  name;
+  // Обязательное объявление приватных свойств
+  #email;
+
+  constructor({ name, email }) {
+    this.name = name;
+    this.#email = email;
+  }
+
+  getEmail() {
+    return this.#email;
+  }
+
+  changeEmail(newEmail) {
+    this.#email = newEmail;
+  }
+}
+
+const mango = new User({ name: 'Манго', email: 'mango@mail.com' });
+
+mango.changeEmail('mango@supermail.com');
+console.log(mango.getEmail()); // mango@supermail.com
+console.log(mango.#email); // Будет ошибка, это приватное свойство
+
+// Методы класса также могут быть приватными, то есть доступны только 
+// в теле класса.Для этого перед их именем необходимо поставить символ #.
