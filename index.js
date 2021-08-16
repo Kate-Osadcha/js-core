@@ -13,8 +13,12 @@
 // import './js/module-3-1-objects.js';
 // import "./js/module-3-2.js";
 // import "./js/module-4-1.js";
+// import "./js/module-5-1-constructors.js";
+import "./js/module-5-5-classes.js";
 
-import "./js/tasks.js";
+
+
+// import "./js/tasks.js";
 // import "./js/test.js";
 
 
