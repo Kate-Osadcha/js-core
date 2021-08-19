@@ -19,7 +19,7 @@
 
 
 
-// import "./js/tasks.js";
+import "./js/tasks.js";
 // import "./js/test.js";
 
 
