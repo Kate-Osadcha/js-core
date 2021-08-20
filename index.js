@@ -21,7 +21,9 @@
 // import "./js/module-5-1-constructors.js";
 // import "./js/module-5-5-classes.js";
 
-import "./js/module-6-1-methods.js";
+// import "./js/module-6-1-methods.js";
+// import "./js/module-6-2.js";
+
 
 
 
