@@ -25,6 +25,8 @@
 // import "./js/module-6-2.js";
 
 // import "./js/module-7-1-DOM.js";
+// import "./js/module-7-2-events.js";
+
 
 
 
