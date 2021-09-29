@@ -30,6 +30,9 @@
 // import "./js/module-8.js";
 // import "./js/module-8-practic.js";
 
+import "./js/module-09-delegation.js";
+
+
 
 
 

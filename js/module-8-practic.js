@@ -122,7 +122,7 @@ function closeModalByKey(e) {
 closeBtn.addEventListener("click", closeModalByClick);
 
 // зачищаем слушателя
-if (!modal.classList.contains("isHidden")) {
+if (modal.classList.contains("isHidden")) {
   window.removeEventListener("keydown", closeModalByKey);
   modal.removeEventListener("click", closeModalByClick);
 }
