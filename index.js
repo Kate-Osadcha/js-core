@@ -32,12 +32,15 @@
 
 // import "./js/module-09-delegation.js";
 
-import "./js/module-11-promises.js";
+// import "./js/module-11-promises.js";
 
 
 
 // import "./js/tasks.js";
 // import "./js/test.js";
+
+
+import './js/iterating-array-methods.js'
 
 
 
